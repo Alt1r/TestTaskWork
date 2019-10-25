@@ -12,9 +12,10 @@ namespace TestTaskLibrary.ElementsModel
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Name { get; set; }
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Temperature { get; set; }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Location { get; set; }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Temperature { get; set; }
+        
 
         int LocationX { get; set; }
         int LocationY { get; set; }

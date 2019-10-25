@@ -15,7 +15,7 @@ namespace TestTaskLibrary.ElementsModel
         {
         }
 
-        protected ExtendedSubElementModel(string id, string name, string temperature, string location, string parentId, string elementState) 
+        protected ExtendedSubElementModel(string id, string name, string location, string temperature,  string parentId, string elementState) 
             : base(id, name, temperature, location)
         {
             ParentId = parentId;
