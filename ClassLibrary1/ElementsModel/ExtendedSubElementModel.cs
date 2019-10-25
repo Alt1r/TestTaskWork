@@ -6,10 +6,16 @@ namespace TestTaskLibrary.ElementsModel
 {
     public abstract class ExtendedSubElementModel : BasicElementModel
     {
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string ParentId { get; set; }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string State { get; set; }
 
-        ExtendedSubElementModel(string id, string name, string temperature, string location, string parentId, string elementState) 
+        protected ExtendedSubElementModel()
+        {
+        }
+
+        protected ExtendedSubElementModel(string id, string name, string temperature, string location, string parentId, string elementState) 
             : base(id, name, temperature, location)
         {
             ParentId = parentId;
