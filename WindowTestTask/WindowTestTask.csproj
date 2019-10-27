@@ -57,6 +57,30 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewElements\BasicNonContainerView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewAlarmOnContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewContainerHeatingPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewContainerStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewContainerText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewContainerTextWithSatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewHeatingLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewElements\ViewSensor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.diagramControl1 = new DevExpress.XtraDiagram.DiagramControl();
+            this.buttonLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,15 +42,26 @@
             "BasicFlowchartShapes"});
             this.diagramControl1.OptionsView.PaperKind = System.Drawing.Printing.PaperKind.Letter;
             this.diagramControl1.OptionsView.Theme = DevExpress.Diagram.Core.DiagramThemes.Linear;
-            this.diagramControl1.Size = new System.Drawing.Size(862, 514);
+            this.diagramControl1.Size = new System.Drawing.Size(915, 495);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(784, 513);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(104, 34);
+            this.buttonLoad.TabIndex = 1;
+            this.buttonLoad.Text = "Load..";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(939, 559);
+            this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.diagramControl1);
             this.Name = "Form1";
             this.Text = "Диаграмма";
@@ -62,6 +74,7 @@
 
         private DevExpress.XtraDiagram.DiagramControl diagramControl1;
         private ViewContainerHeatingPanel heatingPanel1;
+        private System.Windows.Forms.Button buttonLoad;
     }
 }
 
