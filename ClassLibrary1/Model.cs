@@ -9,7 +9,7 @@ namespace TestTaskLibrary
     public class Model
     {
         public Diagram Diagram;
-        private string PathXML { get; set; }
+        //private string PathXML { get; set; }
 
         public Model(string path)
         {

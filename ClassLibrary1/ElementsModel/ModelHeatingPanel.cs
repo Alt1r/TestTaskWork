@@ -41,9 +41,9 @@ namespace TestTaskLibrary.ElementsModel
             IsOnUps = isOnUps;
         }
 
-        public override void PrintConsoleInfo(string StringIdentificator)
+        public override void PrintConsoleInfo(string stringIdentificator)
         {
-            base.PrintConsoleInfo(StringIdentificator);
+            base.PrintConsoleInfo(stringIdentificator);
             Console.WriteLine($"IsInAlarm={IsInAlarm} IsEntryAutomatedOn={IsEntryAutomateOn} IsNetworkOn={IsNetworkOn} IsPowerOn={IsPowerOn} IsOnUps={IsOnUps}");
         }
     }

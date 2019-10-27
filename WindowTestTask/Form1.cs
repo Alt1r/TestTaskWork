@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,7 +112,7 @@ namespace WindowTestTask
 
      class ViewAlarmOnContainer : BasicNonContainerView
      {
-         ViewAlarmOnContainer(float locationX, float locationY)
+         internal ViewAlarmOnContainer(float locationX, float locationY)
              : base("Авария", "Alarm", locationX, locationY)
          {
              
@@ -136,9 +137,9 @@ namespace WindowTestTask
              switch (color)
              {
                  case "-1":
-                     Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))),
-                         ((int)(((byte)(80)))),
-                         ((int)(((byte)(80)))));
+                     Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))),
+                         ((int)(((byte)(160)))),
+                         ((int)(((byte)(160)))));
                      break;
                  case "0":
                     Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))),
@@ -161,20 +162,95 @@ namespace WindowTestTask
 
      class ViewContainerText : DevExpress.XtraDiagram.DiagramShape
      {
-         private float elementSizeWidth = 100F;
-         private float elementSizeHeight = 15F;
+         protected float elementSizeWidth = 95F;
+         internal float elementSizeHeight = 15F;
 
-         internal ViewContainerText(string text, string status, float locationX, float locationY)
+         internal ViewContainerText(string text, float locationX, float locationY)
          {
              // меняется для текста контейнера
              Content = text;
              Position = new DevExpress.Utils.PointFloat(locationX, locationY);
-             // Постоянные текста в контейнере
-             ForegroundId = DevExpress.Diagram.Core.DiagramThemeColorId.Black;
+            // Постоянные текста в контейнере
+            Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            ForegroundId = DevExpress.Diagram.Core.DiagramThemeColorId.Black;
              Size = new System.Drawing.SizeF(elementSizeWidth, elementSizeHeight);
              StrokeId = DevExpress.Diagram.Core.DiagramThemeColorId.Accent1;
-            // добавить индикатор статуса
-            ViewContainerStatus statusText = new ViewContainerStatus(status, elementSizeWidth + locationX, locationY);
+            
          }
+     }
+
+     class ViewContainerTextWithSatus : ViewContainerText
+     {
+         internal ViewContainerStatus statusTextView;
+         internal ViewContainerTextWithSatus(string text, string status, float locationX, float locationY)
+         : base(text, locationX, locationY)
+         {
+             // добавить индикатор статуса
+             statusTextView = new ViewContainerStatus(status, elementSizeWidth + locationX, locationY);
+        }
+     }
+
+     class ViewContainerHeatingPanel : DevExpress.XtraDiagram.DiagramContainer
+     {
+        //protected string[] parametrsName = new string[] {"Вв. автомат", "Связь", "Питание", "На ИБП"};
+        //protected List<ViewContainerTextWithSatus> TextWithStatus = new List<ViewContainerTextWithSatus>();
+        protected float StartLocationElementX = 10F;
+        protected float StartLocationElementY = 28F;
+        protected float ElementSize;
+        protected int CountElements = 0;
+        protected float ContainerWidth = 130F;
+        protected float ContainerHeight = 180F;
+        
+
+        internal ViewContainerHeatingPanel(float locationX, float locationY, string isEntryAutomated, 
+            string isInNetwork, string isPowerOn, string isOnUps, string name, string temperature, string alarm)
+        {
+            var namePanel = new ViewContainerText(name, 25F, 8F);
+            namePanel.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
+            ElementSize = namePanel.elementSizeHeight;
+            var automatedStatus = new ViewContainerTextWithSatus("Вв. автомат",isEntryAutomated, 
+                StartLocationElementX, GetNextLocationY());
+            var networkStatus = new ViewContainerTextWithSatus("Связь", isInNetwork,
+                StartLocationElementX, GetNextLocationY());
+            var powerStatus = new ViewContainerTextWithSatus("Питание", isPowerOn,
+                StartLocationElementX, GetNextLocationY());
+            var upsStatus = new ViewContainerTextWithSatus("На ИБП", isOnUps,
+                StartLocationElementX, GetNextLocationY());
+            var temperatureStatus = new ViewContainerText($"Темп. {temperature} °C", StartLocationElementX, GetNextLocationY());
+            
+            if (alarm == "true")
+            {
+                var alarmStatus = new ViewAlarmOnContainer(25F, GetNextLocationY()+10);
+                Items.Add(alarmStatus);
+            }
+           
+            Items.AddRange(new DevExpress.XtraDiagram.DiagramItem[] 
+                {
+                    namePanel,
+                    automatedStatus,
+                    networkStatus,
+                    powerStatus,
+                    upsStatus,
+                    automatedStatus.statusTextView,
+                    networkStatus.statusTextView,
+                    powerStatus.statusTextView,
+                    upsStatus.statusTextView,
+                    temperatureStatus,
+            });
+             Position = new DevExpress.Utils.PointFloat(locationX, locationY);
+
+             // постоянные для всех контейнеров этого типа
+             BackgroundId = DevExpress.Diagram.Core.DiagramThemeColorId.Accent1;
+             Shape = DevExpress.Diagram.Core.StandardContainers.Alternating;
+             Size = new System.Drawing.SizeF(ContainerWidth, ContainerHeight);
+             StrokeId = DevExpress.Diagram.Core.DiagramThemeColorId.Black;
+        }
+
+        private float GetNextLocationY()
+        {
+            float locationY = CountElements * ElementSize + StartLocationElementY ;
+            CountElements++;
+            return locationY;
+        }
      }
 }
