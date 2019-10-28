@@ -42,13 +42,13 @@
             "BasicFlowchartShapes"});
             this.diagramControl1.OptionsView.PaperKind = System.Drawing.Printing.PaperKind.Letter;
             this.diagramControl1.OptionsView.Theme = DevExpress.Diagram.Core.DiagramThemes.Linear;
-            this.diagramControl1.Size = new System.Drawing.Size(915, 495);
+            this.diagramControl1.Size = new System.Drawing.Size(1099, 587);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(784, 513);
+            this.buttonLoad.Location = new System.Drawing.Point(1007, 605);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(104, 34);
             this.buttonLoad.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 559);
+            this.ClientSize = new System.Drawing.Size(1132, 651);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.diagramControl1);
             this.Name = "Form1";

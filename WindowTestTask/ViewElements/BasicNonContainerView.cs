@@ -20,7 +20,7 @@ namespace WindowTestTask
             Content = textOnDisplay;
             //постоянные для всех потомков
             ForegroundId = DevExpress.Diagram.Core.DiagramThemeColorId.Black;
-            Size = new System.Drawing.SizeF(80F, 50F);
+            Size = new System.Drawing.SizeF(80F, 40F);
             StrokeId = DevExpress.Diagram.Core.DiagramThemeColorId.Black;
         }
 
