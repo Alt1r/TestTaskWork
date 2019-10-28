@@ -22,11 +22,12 @@ namespace WindowTestTask
         private Model dataModel;
         private void buttonLoad_Click(object sender, EventArgs e)
         {
-            diagramControl1.DeleteItems(diagramControl1.Items);
+            
             OpenFileDialog OPF = new OpenFileDialog();
             OPF.Filter = "Файлы XML|*.xml";
             if (OPF.ShowDialog() == DialogResult.OK)
             {
+                diagramControl1.DeleteItems(diagramControl1.Items);
                 dataModel = new Model(OPF.FileName);
                 // Загрузка Щита обогрева
                 foreach (var heatingPanel in dataModel.Diagram.element.HeatingPanel)
